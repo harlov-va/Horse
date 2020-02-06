@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    //Layout = null;
+}
+
+<link href="~/Content/chessboard-0.3.0.min.css" rel="stylesheet">
+<br />
+<div id="myBoard" style="width: 500px"></div>
+<br />
+<p><h4>Максимальное количество оригинальных ходов: <strong></strong></h4></p>
+
+<button id="showPositionBtn" type="button" class="btn btn-default">Посчитать</button>
+
+<script src="~/Content/jquery-3.4.1.min.js"></script>
+<script src="~/Content/chessboard.js"></script>
+<script src="~/Content/as.resources.js" type="text/javascript"></script>
+<script src="~/Content/as.sys.js" type="text/javascript"></script>
+<script>
+    
+    var position = { a1: 'bN' }
+    var config = {
+        draggable: true,
+        dropOffBoard: 'snapback', // this is the default
+        position: position
+    }
+    var board = Chessboard('myBoard', config)
+    function clickShowPositionBtn() {
+        $('strong').text("идёт подсчет");
+        //console.log('Current position as an Object:')
+        //console.log(board.position())
+        as.sys.ajaxSend("/Home/GetCountMoves", board.position(), function (data) {
+            if (typeof (data) != "object") data = eval('(' + data + ')');
+            if (data.result) {
+                //as.sys.bootstrapAlert(data.msg || as.resources.crud_showEditDialog_savedMessage, { type: 'success' });
+                //as.sys.closeDialog();
+                $('strong').text(data.countMoves);
+            } else {
+                as.sys.bootstrapAlert(data.msg || as.resources.crud_showEditDialog_savedErrMessage, { type: 'danger' });
+            }
+        });
+        
+    }
+
+    $('#showPositionBtn').on('click', clickShowPositionBtn)
+</script>

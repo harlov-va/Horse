@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="h_logMoves">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dateInsert" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="nameFigure" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="coordinatesFigures" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="countMoves" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="LocalSqlServer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="h_logMoves" EntityType="Self.h_logMoves" />
+  </EntityContainer>
+</Schema>

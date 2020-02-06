@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище CoreModelContainer" CdmEntityContainer="LocalSqlServer">
+    <EntitySetMapping Name="h_logMoves">
+      <EntityTypeMapping TypeName="CoreModel.h_logMoves">
+        <MappingFragment StoreEntitySet="h_logMoves">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="dateInsert" ColumnName="dateInsert" />
+          <ScalarProperty Name="nameFigure" ColumnName="nameFigure" />
+          <ScalarProperty Name="coordinatesFigures" ColumnName="coordinatesFigures" />
+          <ScalarProperty Name="countMoves" ColumnName="countMoves" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
